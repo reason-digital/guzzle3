@@ -134,6 +134,8 @@ class Client extends AbstractHasDispatcher implements ClientInterface
     final public function setSslVerification($certificateAuthority = true, $verifyPeer = true, $verifyHost = 2)
     {
         $opts = $this->config[self::CURL_OPTIONS] ?: array();
+        
+        // fix for proxy
         $opts[CURLOPT_PROXY] = '192.168.0.26:3128';
 
         if ($certificateAuthority === true) {
